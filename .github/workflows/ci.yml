@@ -14,6 +14,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  compose:
+    name: Compose configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Validate Docker Compose configuration
+        run: docker compose config --quiet
+
   backend:
     name: Backend tests
     runs-on: ubuntu-latest

@@ -2,7 +2,7 @@
 
 ## Next
 
-1. Add a CI workflow that runs backend tests, Flutter tests/analyzer, and validates Compose configuration.
+1. Expand the A1 learning content with fuller English explanations and Turkish translations.
 
 ## Later
 
