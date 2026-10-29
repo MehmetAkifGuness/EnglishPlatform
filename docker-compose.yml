@@ -1,0 +1,32 @@
+services:
+  database:
+    image: postgres:17.11-alpine
+    environment:
+      POSTGRES_DB: polyglot
+      POSTGRES_USER: polyglot
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-polyglot_dev}
+    ports:
+      - "5432:5432"
+    volumes:
+      - polyglot-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U polyglot -d polyglot"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend
+    environment:
+      DB_URL: jdbc:postgresql://database:5432/polyglot
+      DB_USERNAME: polyglot
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-polyglot_dev}
+    ports:
+      - "8080:8080"
+    depends_on:
+      database:
+        condition: service_healthy
+
+volumes:
+  polyglot-postgres:

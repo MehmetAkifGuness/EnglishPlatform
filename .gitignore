@@ -1,0 +1,28 @@
+# Java / Maven
+**/target/
+
+# Flutter / Dart
+**/.dart_tool/
+**/build/
+**/.packages
+**/android/local.properties
+**/android/.gradle/
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/ephemeral/
+
+# IDE and OS files
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Local secrets and signing keys
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
